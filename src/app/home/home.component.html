@@ -1,0 +1,49 @@
+<div class="container-fluid">
+  
+  <div class="text-right mr-3">
+    <button *ngIf="!logged" type="button" class="btn btn-link" (click)="toLogin()">Login</button>
+    <button *ngIf="logged" type="button" class="btn btn-link" (click)="toLogout()">Logout</button>
+  </div>
+
+  <div class="row" style="width: 100%;">
+    <div class="text-center" style="width: 100%;">
+        <form (ngSubmit)="queryField.valid && onSubmit()" id="search-form" class="form-inline absolute-center text-center" 
+          style="width: 100%;">
+          <div class="absolute-center" style="width: 100%;">
+            <input class="form-control search-form" type="search" 
+               style="width: 39%;" placeholder="Medicine name..."[(formControl)]="queryField"
+               [matAutocomplete]="auto">
+
+            <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let key of keys" 
+                  [value]="key.medKey" style="color: black;">
+                  {{key.medKey}}
+                </mat-option>
+            </mat-autocomplete>
+          
+            <span class="input-group-btn"> 
+                <button type="submit" class="btn btn-primary search-btn btn-sm">
+                  <mat-icon>search</mat-icon>
+                </button>
+            </span><br>
+
+         <!--   <div class="btn-group btn-group-toggle" data-toggle="buttons">
+              <button class="btn btn-sm" (click)="searchForMedicine()">Medicine</button>
+              <button class="btn btn-sm" (click)="searchForStore()">Medical Store</button>
+              <button class="btn btn-sm" (click)="searchForBank()">Blood Bank</button>
+            </div> -->
+
+          </div>
+        </form>
+    </div>
+  </div>
+
+  <div class="row absolute-bottom">
+    <button (click)="toListStore()">
+      <img src="../../assets/icons/drugstore-512.png" style="height: 120px;"></button>
+    <button (click)="toListBank()">
+      <img src="../../assets/icons/1297136.png" style="height: 120px;"></button>
+  </div>
+
+</div>
+

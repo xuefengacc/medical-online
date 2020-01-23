@@ -1,0 +1,24 @@
+<div class="container-fluid">
+
+<!--  <div class="row">
+      <span>Your Location</span>
+  </div> -->
+  <div style="width:100%">
+    <app-map></app-map>
+  </div>
+
+  <div class=row>
+    <div class="store-list">
+      <div *ngFor="let store of storeList | slice:pageSize | slice:0:itemsPerPage">
+        <div><app-store-info [store]='store'></app-store-info></div>
+      </div><br>
+      <div class="col-6 input-group">
+        <div class="col-5 input-group-addon">
+          <ngb-pagination [collectionSize]="total" #numPages [pageSize]="itemsPerPage" 
+            [(page)]="currentPage" (pageChange)="onPageChange(currentPage)"></ngb-pagination>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

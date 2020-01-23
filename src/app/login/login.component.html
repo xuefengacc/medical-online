@@ -1,0 +1,32 @@
+
+<div class="d-flex absolute-center">
+  
+  <div class="d-flex bd-highlight" 
+    style="background-color:rgb(202, 211, 241); width:400px; height: 360px; margin: auto;">
+    <div class="text-center">
+       <img src="">
+    </div>
+    <div class="mx-auto" [hidden]="submitted" style="width: 300px; margin: auto;">
+      <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="name">Email</label>
+            <input type="email" class="form-control" id="login_username" 
+              required [(ngModel)]="jwtRequest.username" name="username">
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="login_password" 
+              required [(ngModel)]="jwtRequest.password" name="password">
+        </div>
+        
+        <div class="text-center">
+          <button type="submit" class="btn btn-success">Login</button>
+        </div>
+        <div class="text-center">
+          <button type="button" class="btn btn-link" (click)="toReset()">Forget password?</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

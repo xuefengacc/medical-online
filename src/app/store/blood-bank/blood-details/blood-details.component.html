@@ -1,0 +1,58 @@
+<div class="card" style="width: 300px;">
+  <button type="button" class="btn btn-link card-header text-left" (click)="ifHideDetails()">
+      Serial: {{blood.itemName}}</button>
+  <div *ngIf="blood" [hidden]="hideDetails" style="width: 300px;" class="card-body">
+    <table class="table-bordered">
+      <tr>
+          <td>Serial:</td>
+          <td><span>{{blood.itemName}}</span>
+              <input type="text" *ngIf="blood.canEditCode"
+               [(ngModel)]="blood.itemName" class="form-control"></td>
+      </tr>
+
+      <tr>
+          <td>Type:</td>
+          <td><span>{{blood.bloodType}}</span>
+            <div *ngIf="blood.canEditCode">
+              <select id="updatebloodtype" [(ngModel)]="blood.bloodType" 
+                name="updatebloodtype" class="form-control">
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="AB">AB</option>
+                <option value="O">O</option>
+              </select>
+            </div></td>
+      </tr>
+
+      <tr>
+          <td>Volum(cc):</td>
+          <td><span>{{blood.bloodVolum}}</span>
+            <div *ngIf="blood.canEditCode">
+              <select id="updatebloodvolum" [(ngModel)]="blood.bloodVolum" 
+                name="updatebloodvolum" class="form-control">
+                <option value="200">200</option>
+                <option value="300">300</option>
+                <option value="400">400</option>
+                <option value="600">600</option>
+              </select>
+            </div></td>  
+      </tr>
+    </table>
+    <button type="button" [hidden]="blood.canEditCode" 
+      class="btn btn-outline-success btn-sm" 
+      (click) = "blood.canEditCode = true">Edit</button>
+
+    <button type="button" [hidden]="!blood.canEditCode" 
+      class="btn btn-outline-primary btn-sm"
+      (click)='updateBlood()'>Save Changes</button>
+
+    <button type="button" [hidden]="!blood.canEditCode" 
+      class="btn btn-outline-warning btn-sm" 
+      (click)="blood.canEditCode = false">Cancle</button>
+
+    <button type="button" [hidden]="blood.canEditCode" 
+      class="btn btn-outline-danger btn-sm"
+      (click)='deleteBlood()'>Delete</button>
+  </div>
+
+</div>

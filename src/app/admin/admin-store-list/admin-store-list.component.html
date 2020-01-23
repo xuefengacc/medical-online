@@ -1,0 +1,24 @@
+<h4>Store List&ensp;<button type="button" 
+  class="btn btn-sm btn-link" (click)="refresh()">Refresh</button></h4>
+<div class="container-fluid" style="font-size: small;">
+  <div *ngFor="let store of stores | slice: pageSize | slice: 0:itemsPerPage" style="width: 90%;">
+    <app-admin-store-details [store]='store'></app-admin-store-details>
+  </div>
+  <div class="col-6 input-group">
+    <div class="col-5 input-group-addon">
+      <ngb-pagination [collectionSize]="total" #numPages [pageSize]="itemsPerPage" 
+        [(page)]="currentPage" (pageChange)="onPageChange(currentPage)"></ngb-pagination>
+    </div>
+      <!--  <div class="col-1 input-group-addon">
+      <input class="input-sm text-center" type="number" [min]="10" [max]="total" 
+        step="1" [(ngModel)]=itemsPerPage (onClick)="changePageSize(pageSize)">
+      </div> -->
+  </div>  
+</div>
+<!---
+<div>
+    <button type="button" class="button btn-danger" (click)='deleteCustomers()'>
+        Delete All
+    </button>
+</div>
+-->

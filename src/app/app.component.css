@@ -1,0 +1,10 @@
+app-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+agm-map {
+    height: 200px;
+    width: 50%;
+}

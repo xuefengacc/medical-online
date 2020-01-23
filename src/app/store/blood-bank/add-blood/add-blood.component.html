@@ -1,0 +1,80 @@
+<div class="card" style="width: 270px;">
+    <p class="card-header">New Storage</p>
+    <div *ngIf="!submitted" style="font-size: small;" class="card-body">
+        <form (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm">
+            
+            <div class="form-group">
+                <label for="bloodname">Blood Serial</label>
+                <input type="text" class="form-control" id="bloodname" 
+                  style="font-size: small;width: 160px;"
+                  required [(ngModel)]="blood.itemName" name="bloodname" #bloodname="ngModel"
+                  [ngClass]="{'is-invalid': f.submitted && bloodname.invalid}">
+                
+                <div *ngIf="f.submitted && bloodname.invalid" class="invalid-feedback">
+                    <div *ngIf="bloodname.errors.required">*required</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="bloodtype">Blood Type</label>
+                <fieldset id="bloodtype" name="bloodtype">
+                    
+                    <input type="radio" required [(ngModel)]="blood.bloodType" 
+                      #bloodtype="ngModel" value="A" name="bloodtype">
+                    <label>A &nbsp;</label>
+                    
+                    <input type="radio" required [(ngModel)]="blood.bloodType" 
+                      #bloodtype="ngModel" value="B" name="bloodtype">
+                    <label>B &nbsp;</label>
+
+                    <input type="radio" required [(ngModel)]="blood.bloodType" 
+                      #bloodtype="ngModel" value="AB" name="bloodtype">
+                    <label>AB &nbsp;</label>
+
+                    <input type="radio" required [(ngModel)]="blood.bloodType" 
+                      #bloodtype="ngModel" value="O" name="bloodtype">
+                    <label>O &nbsp;</label>
+
+                    <div *ngIf="f.submitted && bloodtype.invalid" class="invalid-feedback d-block">
+                      <div *ngIf="bloodtype.errors.required">*required</div>
+                    </div>    
+                </fieldset>
+                
+            </div>
+            
+            <div class="form-group">
+                <label for="bloodvolum">Blood Volum</label>
+                  <fieldset id="bloodvolum">
+                    <input type="radio" required [(ngModel)]="blood.bloodVolum" 
+                      #bloodvolum="ngModel" value="200" name="bloodvolum">
+                    <label>200cc &nbsp;</label>
+                
+                    <input type="radio" required [(ngModel)]="blood.bloodVolum" 
+                      value="300" name="bloodvolum">
+                    <label>300cc &nbsp;</label>
+                            
+                    <input type="radio" required [(ngModel)]="blood.bloodVolum" 
+                      value="400" name="bloodvolum">
+                    <label>400cc &nbsp;</label>
+                               
+                    <input type="radio" required [(ngModel)]="blood.bloodVolum" 
+                      value="600" name="bloodvolum">
+                    <label>600cc &nbsp;</label>
+              
+                    <div *ngIf="f.submitted && bloodvolum.invalid" class="invalid-feedback d-block">
+                      <div *ngIf="bloodvolum.errors.required">*required</div>
+                    </div>
+                  </fieldset>
+            </div>
+
+            <div>
+               <button type="submit" class="btn btn-success">Add</button> 
+            </div>
+        </form>
+    </div>
+
+    <div *ngIf="submitted" class="card-body">
+      <p>New blood added</p>
+      <button type="button" class="btn btn-success" (click)="newBlood()">Continue</button>
+    </div>
+</div>

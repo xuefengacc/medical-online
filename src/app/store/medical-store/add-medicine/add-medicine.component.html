@@ -1,0 +1,92 @@
+<div class="card" style="width: 400px;">
+    <p class="card-header">New Medicine</p>
+    <div *ngIf="!submitted" style="font-size: small;" class="card-body">
+        <form (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm">
+            
+        <div class="form-group">
+            <label for="medicinename">Medicine Name&nbsp;&nbsp;</label>
+            <input type="text" class="form-control" id="medicinename" 
+              required [(ngModel)]="medicine.itemName" name="medicinename" 
+              #medicinename="ngModel" 
+              [ngClass]="{'is-invalid':f.submitted && medicinename.invalid}">
+            
+            <div *ngIf="f.submitted && medicinename.invalid" class="error-input">
+                <div *ngIf="medicinename.errors.required">*Required</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Category&nbsp;&nbsp;</label>
+            <select class="form-control" id="category"
+              required [(ngModel)]="medicine.catalog" name="category" #category="ngModel"
+              [ngClass]="{'is-invalid':f.submitted && category.invalid}">
+              <!-- TODO set value -->
+              <option value="First Aid">First Aid</option>
+              <option value="Cough & Cold">Cough & Cold</option>
+              <option value="Digestion & Nausea">Digestion & Nausea</option>
+              <option value="Pain Relievers">Pain Relievers</option>
+              <option value="Allergy">Allergy</option>
+              <option value="Sinus & Asthma">Sinus & Asthma</option>
+              <option value="Diabetes">Diabetes</option>
+              <option value="Other">Other</option>
+            </select>
+
+            <div *ngIf="f.submitted && category.invalid" class="error-input">
+                <div *ngIf="category.errors.required">*Required</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="manufacturer">Manufacturer&nbsp;&nbsp;</label>
+            <input type="text" class="form-control" id="manufacturer"
+              required [(ngModel)]="medicine.producer" name="manufacturer"
+              #manufacturer="ngModel"
+              [ngClass]="{'is-invalid':f.submitted && manufacturer.invalid}">
+
+            <div *ngIf="f.submitted && manufacturer.invalid" class="error-input">
+                <div *ngIf="manufacturer.errors.required">*Required</div>
+            </div>
+        </div>
+        <!-- TODO Enable numeric only -->
+        <div class="form-group">
+            <label for="price">Price&nbsp;&nbsp;</label>
+            <input type="text" class="form-control" id="price"
+              required [(ngModel)]="medicine.price" name="price"
+              #price="ngModel"
+              [ngClass]="{'is-invalid':f.submitted && price.invalid}">
+
+            <div *ngIf="f.submitted && price.invalid" class="error-input">
+                <div *ngIf="price.errors.required">*Required</div>
+            </div>
+        </div>
+ 
+        <div class="form-group">
+            <label for="storage">Storage&nbsp;&nbsp;</label>
+            <input type="number" class="form-control" id="storage"
+            required [(ngModel)]="medicine.storage" name="storage"
+            #storage="ngModel"
+            [ngClass]="{'is-invalid':f.submitted && storage.invalid}">
+
+            <div *ngIf="f.submitted && storage.invalid" class="error-input">
+                <div *ngIf="storage.errors.required">*Required</div>
+            </div>
+        </div>
+        
+        <div class="text-center">
+            <label>Upload Picture:&nbsp;</label>
+            <input type="file" (change)="onFileChange($event)">
+            <img [src]="imgURL" height="200px" *ngIf="imgURL">
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-success btn-sm">Add</button>
+        </div>
+        </form>
+        <!-- upload image -->
+    </div>
+
+    <div *ngIf="submitted" class="card-body">
+        <p>New medicine added, press continue to add a new one</p>
+        <button type="button" class="btn btn-success" (click)="newMedicine()">Continue</button>
+    </div>
+</div>

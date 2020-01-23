@@ -1,0 +1,39 @@
+<div class="container" style="background-color: lightgoldenrodyellow;">
+  
+  <div *ngIf="this.store" class="row text-center" style="width: 100%;">
+      <div class="store-name">
+        {{store.storeName}}
+      </div>
+  </div>
+  <div>
+      <div class="store-info">
+          <span>{{store.email}}</span><br>
+          <span>{{store.phone}}</span><br>
+          <span>{{store.address}}</span><br>
+      </div>
+  </div>
+
+</div>
+
+<div *ngIf="this.items" class="container mt-3 ml-3">
+  <div class="result-set text-left"> 
+    
+    <div *ngFor="let medicines of medGroup | slice:pageSize | slice: 0: itemsPerPage" 
+      style="width:80%">
+      <div class=row>
+        <div *ngFor="let medicine of medicines" class="col-sm-6">
+          <app-search-results [med]='medicine'></app-search-results><br>
+        </div>
+      </div>
+    </div>
+      
+    <div class="col-6 input-group">
+      <div class="col-5 input-group-addon">
+        <ngb-pagination [collectionSize]="total" #numPages [pageSize]="itemsPerPage" 
+          [(page)]="currentPage" (pageChange)="onPageChange(currentPage)"></ngb-pagination>
+      </div>
+    </div>
+  
+  </div>      
+</div>
+

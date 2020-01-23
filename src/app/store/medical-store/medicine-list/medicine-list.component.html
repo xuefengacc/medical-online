@@ -1,0 +1,19 @@
+<p class="ml-3">Medicine List&ensp;<button type="button" class="btn btn-sm btn-link" 
+    (click)="refresh()">Refresh</button></p>
+<div class="container-fluid">
+    <div *ngFor="let medicine of medicines | slice: pageSize | slice: 0:itemsPerPage" style="width: 90%;">
+        <app-medicine-details [medicine]='medicine'></app-medicine-details>
+    </div>
+    <div class="col-6 input-group">
+        <div class="col-5 input-group-addon">
+            <ngb-pagination [collectionSize]="total" #numPages [pageSize]="itemsPerPage" 
+              [(page)]="currentPage" (pageChange)="onPageChange(currentPage)"></ngb-pagination>
+        </div>
+      <!--  <div class="col-1 input-group-addon">
+            <input class="input-sm text-center" type="number" [min]="10" [max]="total" 
+              step="1" [(ngModel)]=itemsPerPage (onClick)="changePageSize(pageSize)">
+        </div> -->
+    </div>
+</div>
+
+

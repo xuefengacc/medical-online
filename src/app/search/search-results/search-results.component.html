@@ -1,0 +1,32 @@
+<div class="container" style="background-color: white;">
+    <div class="row">
+
+        <div class="col-sm-6">
+            <img style="height: 200px;" *ngIf="convertedImage" [src]="convertedImage">
+        </div>
+        
+        <div class="col-sm-6">
+            <div class="result-name">
+                <span>{{med.itemName}}</span>
+            </div>
+            <div class="result-catalog">
+                <span>{{med.catalog}}</span>
+            </div>
+            <div class="result-producer">
+                <span>by&nbsp;</span><span style="color:blue;">{{med.producer}}</span>
+            </div>
+            <div class="result-price">
+                <span>${{med.price}}</span>
+            </div>
+            <div class="result-store">
+                <span style="font-size: small;">Store:</span>
+                <button class="btn btn-link btn-sm" (click)="toStore()">{{med.storeName}}</button>
+            </div>
+            <div class="result-storage">
+                <span>Storage:&nbsp;</span><span>{{med.storage}}</span>
+            </div>
+        </div>
+
+    </div>
+</div>
+

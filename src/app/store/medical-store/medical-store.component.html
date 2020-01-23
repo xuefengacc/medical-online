@@ -1,0 +1,43 @@
+<div class="background-img-container">
+  <img class="background-img" *ngIf="convertedImage" [src]="convertedImage">
+  <div class="container-fluid">
+    <div class="row" style="background-color: ghostwhite;">
+        <div class="col-sm-6">
+          <p>{{store.storeName}}</p>
+        </div>
+       <div class="container text-right col-sm-6">
+          <button type="button" class="btn btn-link mr-2" (click)="toLogout()">Logout</button>
+        </div> 
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <app-medicine-list></app-medicine-list>
+        </div>
+        <div class="col-sm-6">
+          <div class="col-sm-5" *ngIf="!info">
+            <app-add-medicine></app-add-medicine>
+            <button type="button" class="btn btn-link btn-sm" (click)="onInfo()">Close</button>
+          </div>
+          
+          <div class="col-sm-5" *ngIf="info">
+            <div><p style="font-size: x-large; font-weight: bold;">Store Information</p></div>
+            
+            <div><p style="font-weight: bold;">{{store.storeName}}</p></div>
+            <div><p>{{store.address}}</p></div>
+            <div><p style="font-weight: lighter;">{{store.phone}}</p></div>
+
+            <div style="font-size: small;">
+              <label>Background Picture:&nbsp;</label>
+              <button type="button" class="btn btn-outline-secondary btn-sm" 
+                (click)="onUpload()" style="font-size: x-small;">Set</button>
+              <input type="file" style="display: flex;" (change)="onFileChange($event)">
+            </div>
+
+            <button type="button" class="btn btn-link btn-sm" (click)="onInfo()">Add Medicine</button>
+          </div>
+        
+        </div>
+    </div>
+  
+  </div>
+</div>

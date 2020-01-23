@@ -1,0 +1,101 @@
+<div class="card" style="width: 400px;">
+  <p class="card-header">Add New Store Account</p>
+  <div *ngIf="!submitted" style="font-size: small;" class="card-body">
+    <form (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" 
+      [mustMatch]="['password','confirmPassword']">
+        
+        <div class="form-group">
+            <label for="name">Store name&nbsp;&nbsp;</label>
+            <input type="text" class="form-control" id="name" 
+              required minlength="3" maxlength="30" 
+              [(ngModel)]="store.storeName" name="storename" #storename = "ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && storename.invalid }">
+              
+              <div *ngIf="f.submitted && storename.invalid" class="error-input">
+                <div *ngIf="storename.errors.required">*Required</div>
+              </div>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email&nbsp;&nbsp;</label>
+            <input type="email" class="form-control" id="email" 
+              required [(ngModel)]="store.email" name="email" #email = "ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && email.invalid }">
+            
+            <div *ngIf="f.submitted && email.invalid" class="error-input">
+                <div *ngIf="email.errors.required">*Required</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password&nbsp;&nbsp;</label>
+            <input type="password" class="form-control" id="password" 
+              required [(ngModel)]="store.password" name="password" #password = "ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && password.invalid }">
+
+              <div *ngIf="f.submitted && password.invalid" class="error-input">
+                <div *ngIf="password.errors.required">*Required</div>
+                <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
+              </div>
+        </div>
+
+        <div class="form-group">
+          <label for="confirmPassword">Confirm&nbsp;&nbsp;</label>
+          <input type="password" class="form-control" id="confirmPassword"
+            required ngModel name="confirmPassword" #confirmPassword = "ngModel"
+            [ngClass]="{ 'is-invalid': f.submitted && confirmPassword.invalid }">
+
+            <div *ngIf="f.submitted && confirmPassword.invalid" class="error-input">
+              <div *ngIf="confirmPassword.errors.required">*Required</div>
+              <div *ngIf="confirmPassword.errors.mustMatch">*Not match</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="type">Type&nbsp;&nbsp;</label>
+            <select class="form-control" id="type" 
+              required [(ngModel)]="store.type" name="type" #type = "ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && type.invalid }">
+                <option value="MEDICALSTORE">Medical Store</option>
+                <option value="BLOODSTORE">Blood Store</option>
+            </select>
+
+            <div *ngIf="f.submitted && type.invalid" class="error-input">
+              <div *ngIf="f.submitted && type.invalid">*Required</div>
+            </div>            
+        </div>
+
+        <!-- TODO using address -->
+        <div class="form-group">
+            <label for="address">Address&nbsp;&nbsp;</label>
+            <input type="text" class="form-control" id="address" 
+              required [(ngModel)]="store.address" name="address" #address = "ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && address.invalid }">
+
+              <div *ngIf="f.submitted && address.invalid" class="error-input">
+                <div *ngIf="f.submitted && address.invalid">*Required</div>
+              </div>
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Phone Number&nbsp;&nbsp;</label>
+            <input type="text" class="form-control" id="phone" 
+              required [(ngModel)]="store.phone" name="phone" #phone = "ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && phone.invalid }">
+            
+            <div *ngIf="f.submitted && phone.invalid" class="error-input">
+              <div *ngIf="f.submitted && phone.invalid">*Required</div>
+            </div>
+        </div>
+        <div class="text-center">
+          <button type="submit" class="btn btn-success">Add</button>
+        </div>
+    </form>
+  </div>
+
+  <div *ngIf="submitted" class="card-body">
+    <button type="button" class="btn btn-success" (click)="newStore()">Continue</button>
+  </div>
+</div>
+
+

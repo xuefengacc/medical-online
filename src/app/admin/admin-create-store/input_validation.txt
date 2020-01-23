@@ -1,0 +1,16 @@
+1. email -required and unique among all users
+2. storeName -required
+3. type -required
+4. Address -required
+5. phone number -required dpecific pattern
+6. Add button -enable only all fields are valid
+
+--------------------------------------------------------------------------------------------
+valid – state of the validity of all form controls, true if all controls are valid
+
+invalid – inverse of valid; true if some control is invalid
+
+pristine – gives a status about the “cleanness” of the form; true if no control was modified
+
+dirty – inverse of pristine; true if some control was modified
+--------------------------------------------------------------------------------------------

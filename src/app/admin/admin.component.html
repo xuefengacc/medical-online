@@ -1,0 +1,18 @@
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-sm-6">
+        <h3>Store Management</h3>
+      </div>
+      <div class="container text-right col-sm-6">
+        <button type="button" class="btn btn-link mr-2" (click)="toLogout()">Logout</button>
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-sm-6" style="background-color: rgb(223, 235, 235);">
+          <app-admin-store-list></app-admin-store-list>
+      </div>
+      <div class="col-sm-6" style="background-color: honeydew;">
+        <app-admin-create-store></app-admin-create-store>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,55 @@
+<div class="card">
+    <button type="button" class="btn btn-link card-header text-left" 
+      (click)="ifHideDetails()">
+      {{medicine.itemName}}
+    </button>
+    <div *ngIf="medicine" class="card-body container" [hidden]="hideDetails">
+      <div class="row">
+        <div class="col-sm-6">
+          <img style="height: 200px;" *ngIf="convertedImage" [src]="convertedImage">
+        </div>
+      
+        <div class="col-sm-6">
+          <div class="detail-name">
+            <span>{{medicine.itemName}}</span>
+            <input type="text" *ngIf="medicine.canEditCode"
+               [(ngModel)]="medicine.itemName" class="form-control">
+          </div>
+          <div class="detail-catagory">
+            <span>{{medicine.catalog}}</span>
+          </div>
+          <div class="detail-producer">
+            <span>{{medicine.producer}}</span>
+            <input type="text" *ngIf="medicine.canEditCode" 
+                [(ngModel)]="medicine.producer" class="form-control">
+          </div>
+          <div class="detail-price">
+            <span>${{medicine.price}}</span>
+            <input type="text" *ngIf="medicine.canEditCode"
+                [(ngModel)]="medicine.price" class="form-control"> 
+          </div>
+          <div class="detail-storage">
+            <span>Storage:&nbsp;</span><span>{{medicine.storage}}</span>
+            <input type="number" *ngIf="medicine.canEditCode"
+                    [(ngModel)]="medicine.storage" class="form-control">
+          </div>
+
+          <div>
+            <button type="button" *ngIf="!medicine.canEditCode"
+              class="btn btn-outline-success btn-sm"
+              (click)="medicine.canEditCode = true">Edit</button>
+            <button type="button" *ngIf="medicine.canEditCode"
+              class="btn btn-outline-primary btn-sm"
+              (click)="updateMedicine()">Save Changes</button>
+            <button type="button" *ngIf="medicine.canEditCode"
+              class="btn btn-outline-warning btn-sm"
+              (click)="medicine.canEditCode = false">Cancle</button>
+            <button type="button" *ngIf="!medicine.canEditCode"
+              class="btn btn-outline-danger btn-sm"
+              (click)="deleteMedicine()">Delete</button>            
+          </div>
+        </div>
+      </div>
+      
+    </div>
+</div>

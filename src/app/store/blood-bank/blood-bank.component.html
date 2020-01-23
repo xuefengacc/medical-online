@@ -1,0 +1,18 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6">
+          <h3>{{store.storeName}}</h3>
+        </div>
+      <div class="container text-right col-sm-6">
+          <button type="button" class="btn btn-link mr-2" (click)="toLogout()">Logout</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <app-add-blood class="ml-3"></app-add-blood>
+        </div>
+        <div class="col-sm-6">
+            <app-blood-list></app-blood-list>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,69 @@
+<div class="card">
+  <button type="button" class="btn btn-link card-header text-left" (click)="ifHideDetails()">
+    {{storeView.storeName}}</button>
+  <div *ngIf="store" [hidden]="hideDetails" class="card-body" style="width: 300px;">
+    <table class="table table-bordered">
+      <tr>
+        <td>Store Name:</td>
+        <td><span>{{storeView.storeName}}</span>
+            <input type="text" *ngIf="store.canEditCode" 
+              [(ngModel)]="store.storeName" class="form-control">
+        </td>
+      </tr>
+
+      <tr>
+        <td>Email:</td>
+        <td><span>{{storeView.email}}</span>
+            <input type="text" *ngIf="store.canEditCode" 
+              [(ngModel)]="store.email" class="form-control">
+        </td>
+      </tr>
+
+      <tr>
+        <td>Password:</td>
+        <td><span>Unavilable</span>
+            <input type="text" *ngIf="store.canEditCode" 
+              [(ngModel)]="store.password" class="form-control">
+        </td>
+      </tr>
+
+      <tr>
+        <td>Type:</td>
+        <td><span>{{store.type}}</span></td>
+      </tr>
+
+      <tr>
+        <td>Address:</td>
+        <td><span>{{storeView.address}}</span>
+            <input type="text" *ngIf="store.canEditCode" 
+              [(ngModel)]="store.address" class="form-control">
+        </td>
+      </tr>
+
+      <tr>
+        <td>Phone:</td>
+        <td><span>{{storeView.phone}}</span>
+            <input type="text" *ngIf="store.canEditCode" 
+              [(ngModel)]="store.phone" class="form-control">
+        </td>
+      </tr>
+    </table>
+
+    <button type="button" [hidden]="store.canEditCode" 
+      class="btn btn-outline-success btn-sm" 
+      (click) = "store.canEditCode = true">Edit</button>
+
+    <button type="button" [hidden]="!store.canEditCode" 
+      class="btn btn-outline-primary btn-sm"
+      (click)='updateStore()'>Save Changes</button>
+
+    <button type="button" [hidden]="!store.canEditCode" 
+      class="btn btn-outline-warning btn-sm" 
+      (click)="store.canEditCode = false">Cancle</button>
+
+    <button type="button" [hidden]="store.canEditCode" 
+      class="btn btn-outline-danger btn-sm"
+      (click)='deleteStore()'>Delete</button>
+
+  </div>
+</div>

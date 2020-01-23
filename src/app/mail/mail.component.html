@@ -1,0 +1,82 @@
+  <div class="container-fluid background-img-container">
+  <img class="background-img" *ngIf="convertedImage" [src]="convertedImage">
+  <div class="row" style="background-color: ghostwhite;">
+    <div class="col-sm-6">
+      <p>{{store.storeName}}</p>
+    </div>
+   <div class="container text-right col-sm-6">
+      <button type="button" class="btn btn-link mr-2" (click)="toLogout()">Logout</button>
+    </div> 
+  </div>
+
+  <div class="row">
+
+    <div class="col-sm-6" *ngIf="!mailSent">
+      <div class="text-left mail-head">
+        <button type="button"  *ngIf="!toSent" class="btn btn-primary btn-sm btn-block" 
+          (click)="onCreate()">Compose</button>
+        <button type="button" *ngIf="toSent" class="btn btn-secondary btn-sm btn-block" 
+          (click)="cancle()">Cancle</button>
+      </div>
+      
+      <div *ngIf="toSent" class="mail-editor">
+
+        <div class="form-group">
+          <input type="text" name="toAddress" class="form-control" required 
+            #toAddress="ngModel" placeholder="To" style="font-size: x-small;" 
+            id="toAddress"  [(ngModel)]="mail.mailTo">
+          
+          <div *ngIf="toAddress.invalid" class="invalid-feedback">
+            <div *ngIf="toAddress.errors.required">*Required</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <input type="text" name="subject" class="form-control" 
+            placeholder="Subject" style="font-size: x-small;" [(ngModel)]="mail.mailSubject">
+        </div>
+        
+        <div class="form-group">
+          <textarea rows="4" cols="50" class="form-control" [(ngModel)]="mail.mailText"></textarea>
+        </div>
+
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-6 text-left" style="font-size: small;">
+              <label>Attechment:&nbsp;</label>
+              <input type="file" (change)="onFileChange($event)">
+            </div>
+            <div class="col-sm-6 text-right">
+              <button type="button" *ngIf="!saved" class="btn btn-primary btn-sm" 
+                (click)="save() && toAddress.valid">Save</button>
+              <button type="button" *ngIf="saved" class="btn btn-secondary btn-sm" 
+                (click)="onSend()">Send</button>
+            </div>
+          </div>
+        </div>
+      
+      </div>
+    </div>
+    
+    <div class="col-sm-6" *ngIf="mailSent">
+      <p>Mail Sent!</p>
+      <div>
+        <button type="button" class="btn btn-warning btn-block" (click)="onBack()">
+          Go back</button>
+      </div>
+    </div>
+
+  <!-- Email list -->
+
+    <div class="col-sm-6">
+        <button type="button" class="btn btn-link" (click)="reload()">Mails Sent</button>
+        <div *ngFor="let m of mailList">
+            <span style="font-size: small;" (click)="showDetails()">
+              {{m.mailTo}},&nbsp;<span style="font-weight: bold;">Subject:</span>&nbsp;
+              {{m.mailSubject}}</span>
+          <app-mail-detail *ngIf="details" [mail]="m"></app-mail-detail>
+        </div>
+    </div>
+
+  </div>
+</div>

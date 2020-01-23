@@ -1,0 +1,12 @@
+.detail-name{
+    font-weight: bold;
+}
+
+.detail-catagory{
+    font-weight: lighter;
+    font-size: small;
+}
+
+.detail-price{
+    color: red;
+}

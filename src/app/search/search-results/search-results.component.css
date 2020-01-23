@@ -1,0 +1,20 @@
+.result-name{
+    font-weight: bold;
+}
+
+.result-catalog{
+    font-weight: lighter;
+    font-size: small;
+}
+
+.result-price{
+    color: red;
+}
+
+.result-producer {
+    font-size: smaller;
+}
+
+.result-storage {
+    font-size: small;
+}
