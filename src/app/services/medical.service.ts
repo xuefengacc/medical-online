@@ -10,7 +10,7 @@ import { CheckStringService } from '../_helpers/check-string.service';
 })
 export class MedicalService {
 
-  private url='http://localhost:8080';
+  private url='http://localhost:5000';
   constructor(
     private http:HttpClient,
     private check: CheckStringService) { }

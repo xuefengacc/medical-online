@@ -17,7 +17,7 @@ export class AuthService {
   private currentUserSubject: BehaviorSubject<JwtResponse>;
   public currentUser: Observable<JwtResponse>;
 
-  private url = 'http://localhost:8080/login';
+  private url = 'http://localhost:5000/login';
 
   constructor(private http: HttpClient) { 
     this.currentUserSubject = new BehaviorSubject<JwtResponse>(JSON
